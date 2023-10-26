@@ -1,0 +1,30 @@
+
+
+.containerConversor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.containerResponse{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
+
+.table {
+    /* padding: 10px; */
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.text {
+    font-size: 20px;
+    margin-top: 20px;
+}

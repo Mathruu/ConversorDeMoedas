@@ -11,8 +11,5 @@ export class MainComponent implements OnInit {
   constructor(private mainService: MainService) {}
 
   ngOnInit(): void {
-    // this.mainService.listarMoedas().subscribe(data => {
-    //   console.log(data);
-    // });
   }
 }
