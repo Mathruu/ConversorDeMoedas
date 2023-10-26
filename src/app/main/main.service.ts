@@ -7,24 +7,23 @@ import { Observable } from 'rxjs';
 })
 export class MainService {
 
+  private apiURL = 'https://v6.exchangerate-api.com/v6/';
+  private apiKey = 'bd895265b130b2825e16c623'; 
+
   constructor(private http: HttpClient) { }
 
-  // getHeaders() {
-  //   return {
+  getCurrenciesNames(): Observable<any> {
+    return this.http.get(`${this.apiURL}${this.apiKey}/codes`);
+  }
+
+  // listarMoedas(): Observable<any> {
+  //   const options = {
   //     headers: new HttpHeaders({
   //       'Content-Type': 'application/json',
   //     })
   //   };
-  // }
 
-  listarMoedas(): Observable<any> {
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      })
-    };
-
-    return this.http.get("https://v6.exchangerate-api.com/v6/bd895265b130b2825e16c623/latest/USD", options);
+  //   return this.http.get("https://v6.exchangerate-api.com/v6/bd895265b130b2825e16c623/latest/USD", options);
 
 }
-}
+
