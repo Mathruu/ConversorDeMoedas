@@ -1,10 +1,12 @@
 
 
 .containerConversor {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: 200px;
+    margin-top: 10px;
+    /* margin-left: 600px;  */
+
 }
 
 .containerResponse{
@@ -13,18 +15,45 @@
     margin-top: 25px;
 }
 
-.table {
-    /* padding: 10px; */
-}
 
 .button {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 25px;
+    /* margin-left: 600px; */
 }
 
 .text {
     font-size: 20px;
     margin-top: 20px;
+}
+
+.textConversao {
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* .input {
+    padding: 20px;
+    margin: 20px;
+} */
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text-center{
+    margin-top: 30px;
+    font-size: 20px;
+    justify-items: center;
+    display: flex;
+    align-items: center;
+    padding: 40px;
 }

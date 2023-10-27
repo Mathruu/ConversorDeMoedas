@@ -1,8 +1,14 @@
 
+<div>
+    <h1 class="title">Conversor de Moedas</h1>
+</div>
 
-<
+<div>
+    <p class="text-center">A conversão de moedas é um processo fundamental no mundo financeiro e no comércio internacional. Envolve a troca de uma moeda por outra com base em uma taxa de câmbio estabelecida. Essa prática é essencial para lidar com transações comerciais, investimentos e viagens internacionais.</p>
+</div>
 
 <div class="containerConversor">
+    <div class="imput">
     <mat-form-field>
         <mat-label>Moeda de Origem</mat-label>
         <mat-select [(ngModel)]="moedaOrigem">
@@ -10,7 +16,9 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
+</div>
 
+<div class="imput">
     <mat-form-field>
         <mat-label>Moeda de Destino</mat-label>
         <mat-select [(ngModel)]="moedaDestino">
@@ -18,18 +26,22 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
+</div>
 
+<div class="imput">
     <mat-form-field>
         <mat-label>Valor a ser convertido</mat-label>
         <input matInput [(ngModel)]="valor" type="number">
     </mat-form-field>
 </div>
-
-<div class="button">
-    <button type="button" class="btn btn-info" (click)="converterMoeda()">Converter</button>
 </div>
 
+<div class="button">
+    <button type="button" class="btn btn-primary" (click)="converterMoeda()">Converter</button>
+</div>
+
+
 <div class="containerResponse" *ngIf="valorConvertido && taxaDeConversao">
-    <p class="text">{{ valor }} em {{ moedaOrigem }} equivale a {{ valorConvertido }} {{ moedaDestino }}</p>
+    <p class="textConversao">{{ valor }} em {{ moedaOrigem }} equivale a {{ valorConvertido }} {{ moedaDestino }}</p>
     <p class="text">Taxa de conversão utilizada: {{ taxaDeConversao }}</p>
 </div>
