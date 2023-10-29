@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class MainService {
 
   private apiURL = 'https://v6.exchangerate-api.com/v6/';
-  private apiKey = 'bd895265b130b2825e16c623'; 
+  private apiKey = '10c789817ba4a2bc473fc29a'; 
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +23,6 @@ export class MainService {
     }
     return this.http.get(url);
   }
-  
+
 }
 

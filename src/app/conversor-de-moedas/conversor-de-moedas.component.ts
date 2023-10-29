@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ListConversionService } from '../list-conversion/list-conversion.service';
 import { MainService } from '../main/main.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-conversor-de-moedas',
@@ -8,21 +10,38 @@ import { MainService } from '../main/main.service';
 })
 export class ConversorDeMoedasComponent {
   moedas: any[] = []; // Deve ser um array de objetos com propriedades 'name' e 'symbol'
-  moedaOrigem: string = '';
+  moedaOrigem: string = 'selecione';
   moedaDestino: string = '';
   valor: number = 0;
   valorConvertido: number = 0;
   taxaDeConversao: number = 0;
+  mostrarResultado: boolean = false;
 
-  constructor(private mainService: MainService) {}
+  constructor(private mainService: MainService, private listConversionService: ListConversionService) {}
 
   converterMoeda() {
-    if (this.moedaOrigem && this.moedaDestino && this.valor) {
+    if (this.moedaOrigem && this.moedaOrigem !== 'selecione' && this.moedaDestino && this.valor) {
       this.mainService.getExchangeRate(this.moedaOrigem, this.moedaDestino, this.valor).subscribe(
         (response: any) => {
           if (response.result === 'success' && response.conversion_rate) {
             this.valorConvertido = response.conversion_result;
             this.taxaDeConversao = response.conversion_rate;
+            this.mostrarResultado = true;
+
+            const id = uuidv4();
+            const conversao = {
+              id: id,
+              data: new Date(),
+              hora: new Date(),
+              moedaOrigem: this.moedaOrigem,
+              moedaDestino: this.moedaDestino,
+              valorEntrada: this.valor,
+              valorSaida: this.valorConvertido,
+              taxaConversao: this.taxaDeConversao
+            };
+            this.listConversionService.adicionarConversao(conversao);
+            const conversaoString = JSON.stringify(conversao);
+            localStorage.setItem('conversao-1', conversaoString);
           }
         },
         (error: any) => {
@@ -51,4 +70,16 @@ export class ConversorDeMoedasComponent {
       }
     );
   }
+
+  realizarNovaConversao() {
+    this.moedaOrigem = 'selecione';
+    this.moedaDestino = '';
+    this.valor = 0;
+    this.valorConvertido = 0;
+    this.taxaDeConversao = 0;
+    this.mostrarResultado = false;
+  }
+
+
+
 }

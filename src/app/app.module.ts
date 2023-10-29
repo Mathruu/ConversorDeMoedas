@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ListCoinComponent } from './list-coin/list-coin.component';
 
+import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
@@ -21,6 +23,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ConversorDeMoedasComponent } from './conversor-de-moedas/conversor-de-moedas.component';
+import { ListConversionComponent } from './list-conversion/list-conversion.component';
 
 
 @NgModule({
@@ -31,7 +34,8 @@ import { ConversorDeMoedasComponent } from './conversor-de-moedas/conversor-de-m
     HeaderComponent,
     FooterComponent,
     ListCoinComponent,
-    ConversorDeMoedasComponent
+    ConversorDeMoedasComponent,
+    ListConversionComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,9 @@ import { ConversorDeMoedasComponent } from './conversor-de-moedas/conversor-de-m
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
