@@ -26,27 +26,32 @@ export class ListConversionComponent implements OnInit {
     ];
 
     history: MatTableDataSource<IListHistory> = new MatTableDataSource<IListHistory>([]);
-    pageSize: number = 10;
 
-    @ViewChild(MatPaginator) paginator!: MatPaginator;
-    @ViewChild(MatSort) sort!: MatSort;
+    @ViewChild('input', { static: true }) input: HTMLInputElement | undefined;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
+    @ViewChild(MatSort, { static: true }) sort: MatSort | undefined;
 
     constructor(private listConversionService: ListConversionService) {
         this.history = new MatTableDataSource<IListHistory>([]);
     }
 
+
     ngOnInit(): void {
         const historyData = JSON.parse(localStorage.getItem('history') || '[]');
         historyData.reverse();
         this.history.data = historyData;
-        this.history.paginator = this.paginator;
-        this.history.sort = this.sort;
+
+        if (this.paginator) {
+            this.history.paginator = this.paginator;
+        }
+        if (this.sort) {
+            this.history.sort = this.sort;
+        }
     }
 
     excluirHistorico(conversao: IListHistory) {
         this.listConversionService.excluirHistorico(conversao);
         this.history = new MatTableDataSource<IListHistory>(this.listConversionService.obterHistoricoCompleto());
-        this.history.sort = this.sort;
     }
 
     applyFilter(event: Event) {

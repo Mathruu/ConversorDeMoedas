@@ -50,6 +50,8 @@ export class ConversorDeMoedasComponent {
       );
     } else {
       console.error('Por favor, preencha todos os campos antes de converter.');
+      const mensagemDeErro = 'Por favor, preencha todos os campos antes de converter.';
+      window.alert(mensagemDeErro);
     }
   }
 

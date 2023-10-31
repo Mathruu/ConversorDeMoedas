@@ -35,12 +35,10 @@ export class ListConversionService {
     localStorage.setItem('history', JSON.stringify(this.history));
   }
 
-  private obterHistorico(): IListHistory[] {
-    const historyData = JSON.parse(localStorage.getItem('history') || '[]');
-    return historyData;
-  }
+  // private obterHistorico(): IListHistory[] {
+  //   const historyData = JSON.parse(localStorage.getItem('history') || '[]');
+  //   return historyData;
+  // }
 
-  obterHistoricoPorId(id: string): IListHistory | undefined {
-    return this.history.find((conversao)=> conversao.id === id)
-  }
+
 }

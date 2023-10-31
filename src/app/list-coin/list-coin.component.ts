@@ -10,11 +10,11 @@ import { IListCurrencies } from '../model/IListCurrencies';
   templateUrl: './list-coin.component.html',
   styleUrls: ['./list-coin.component.css']
 })
+
 export class ListCoinComponent implements OnInit {
 
   displayedColumns: string[] = ['symbol','name'];
   dataSource: MatTableDataSource<IListCurrencies> = new MatTableDataSource<IListCurrencies>([]);
-  pageSize: number = 10;
 
   @ViewChild('input', { static: true }) input: HTMLInputElement | undefined;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator | undefined;
