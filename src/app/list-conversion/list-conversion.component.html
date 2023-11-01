@@ -48,7 +48,7 @@
         <ng-container matColumnDef="acoes">
             <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
             <mat-cell *matCellDef="let conversao">
-                <button type="button" class="btn btn-danger" (click)="excluirHistorico(conversao)">Delete</button>
+                <button type="button" class="btn btn-danger" (click)="excluirHistorico(conversao.id)">Delete</button>
             </mat-cell>
         </ng-container>
 

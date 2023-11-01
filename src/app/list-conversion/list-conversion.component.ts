@@ -50,8 +50,8 @@ export class ListConversionComponent implements OnInit {
     }
 
     excluirHistorico(conversao: IListHistory) {
+        this.history.data = this.listConversionService.obterHistoricoCompleto();
         this.listConversionService.excluirHistorico(conversao);
-        this.history = new MatTableDataSource<IListHistory>(this.listConversionService.obterHistoricoCompleto());
     }
 
     applyFilter(event: Event) {

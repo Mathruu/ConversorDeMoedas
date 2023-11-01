@@ -9,7 +9,7 @@ export class ListConversionService {
   private history: IListHistory[] = [];
 
   constructor() { 
-    const historyData = JSON.parse(localStorage.getItem('history') || '[]');
+    const historyData: IListHistory[] = JSON.parse(localStorage.getItem('history') || '[]');
     this.history = historyData;
   }
 
@@ -24,21 +24,23 @@ export class ListConversionService {
   }
 
   excluirHistorico(conversao: IListHistory) {
+    var index = this.history.map(function(e) { return e.id; }).indexOf(conversao.id);
+
+    console.log('conversão', conversao)
     const index = this.history.indexOf(conversao);
+    console.log(this.history)
+    console.log('Índice:', index);
     if (index !== -1) {
       this.history.splice(index, 1);
       this.atualizarHistorico();
+    
+      console.log(conversao)
     }
   }
 
   private atualizarHistorico() {
     localStorage.setItem('history', JSON.stringify(this.history));
+    console.log("atualizado")
   }
-
-  // private obterHistorico(): IListHistory[] {
-  //   const historyData = JSON.parse(localStorage.getItem('history') || '[]');
-  //   return historyData;
-  // }
-
 
 }
