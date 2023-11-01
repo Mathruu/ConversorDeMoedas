@@ -27,7 +27,6 @@ export class ListConversionService {
     var index = this.history.map(function(e) { return e.id; }).indexOf(conversao.id);
 
     console.log('conversão', conversao)
-    const index = this.history.indexOf(conversao);
     console.log(this.history)
     console.log('Índice:', index);
     if (index !== -1) {
